@@ -1,0 +1,11 @@
+nasm -f elf64 script.asm
+ld -o script script.o
+./script
+
+-- Quick install with Docker
+>> Dockerfile
+FROM ubuntu
+RUN apt update && apt install -y nasm gcc
+
+docker build -t asm .
+docker run --rm -it -v .:/asm -w /asm asm
